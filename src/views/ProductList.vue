@@ -46,6 +46,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "../common/api"
 export default {
   data() {
     return {
@@ -58,7 +59,7 @@ export default {
   },
   methods: {
     getProductList() {
-      const url = "https://dummyjson.com/products";
+      const url = API_URL+"/products";
       axios
         .get(url)
         .then((resposnse) => {
@@ -68,7 +69,6 @@ export default {
         })
         .catch((error) => console.log(error));
     },
-    test: () => console.log("Hello"),
   },
   computed: {
     localAttrs() {
@@ -84,7 +84,6 @@ export default {
     },
   },
   mounted: function() {
-    this.test();
     this.getProductList();
     // console.log(this.headers);
   },
