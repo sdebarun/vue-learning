@@ -8,12 +8,14 @@
               <template v-slot:default>
                 <thead>
                   <tr>
-                    <th class="text-left" v-for="head in headers" :key="head">{{head}}</th>
+                    <th class="text-center" v-for="head in headers" :key="head">
+                      {{ head }}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="product in products" :key="product.id">
-                    <td>{{product.id}}</td>
+                    <td>{{ product.id }}</td>
                     <td>{{ product.title }}</td>
                     <td>{{ product.description }}</td>
                     <td>{{ product.price }}</td>
@@ -22,8 +24,19 @@
                     <td>{{ product.stock }}</td>
                     <td>{{ product.brand }}</td>
                     <td>{{ product.category }}</td>
-                    <td><v-img :src="product.thumbnail" max-height="50px" max-width="50px"></v-img></td>
-                    <td class="product-images"><a target="_blank" v-for="(image,index) in product.images" :key="image" :href="image">{{index +1 }}</a></td>
+                    <td>
+                      <v-img
+                        :src="product.thumbnail"
+                        max-height="50px"
+                        max-width="50px"
+                      ></v-img>
+                    </td>
+                    <!-- <td class="product-images"><a target="_blank" v-for="(image,index) in product.images" :key="image" :href="image">{{index +1 }}</a></td> -->
+                    <td>
+                      <a class="view-link" target="_blank" :href="singleViewUrl + product.id"
+                        ><v-btn icon color="green"> <v-icon>mdi-eye</v-icon> </v-btn></a
+                      >
+                    </td>
                   </tr>
                 </tbody>
               </template>
@@ -46,26 +59,27 @@
 
 <script>
 import axios from "axios";
-import { API_URL } from "../common/api"
+import { BASE_URL } from "../common/api";
 export default {
   data() {
     return {
       products: [],
-      headers : [],
+      headers: [],
       icons: ["mdi-home", "mdi-email", "mdi-calendar", "mdi-delete"],
       padless: true,
       variant: "fixed",
+      singleViewUrl: "product/",
     };
   },
   methods: {
     getProductList() {
-      const url = API_URL+"/products";
+      const url = BASE_URL + "/products";
       axios
         .get(url)
         .then((resposnse) => {
           this.products = resposnse.data.products;
           this.headers = Object.keys(resposnse.data.products[0]);
-          
+          this.headers[10] = 'view';
         })
         .catch((error) => console.log(error));
     },
@@ -83,7 +97,7 @@ export default {
       return attrs;
     },
   },
-  mounted: function() {
+  mounted: function () {
     this.getProductList();
     // console.log(this.headers);
   },
@@ -92,6 +106,9 @@ export default {
 <style scoped>
 .product-images {
   word-wrap: break-all;
+}
+.view-link {
+  text-decoration: none;
 }
 </style>
 
