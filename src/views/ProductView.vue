@@ -5,7 +5,7 @@
           <v-breadcrumbs><u>Products / {{productDetails.title}}</u></v-breadcrumbs>
         <v-row>
           <v-col md-6>
-            <v-img :src=productDetails.thumbnail max-height="350px" max-width="350px"></v-img>
+            <v-img :src=productDetails.thumbnail></v-img>
           </v-col>
           <v-col md-6>
             <h3>{{ productDetails.title }}</h3>

@@ -27,12 +27,13 @@ const routes = [
     component: ProductList
   },
   {
-    path: '/customer-edit',
-    name: 'Edit Customer',
+    path: '/product/:type/:id?',
+    name: 'Edit Product',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/CustomerEdit.vue')
+    component: () => import('@/views/ProductEdit.vue'),
+    props : true,
   },
   {
     path: '/product/:id',
