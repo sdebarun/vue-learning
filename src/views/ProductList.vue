@@ -37,6 +37,11 @@
                         ><v-btn icon color="green"> <v-icon>mdi-eye</v-icon> </v-btn></a
                       >
                     </td>
+                    <td>
+                      <a class="view-link" target="_blank" :href="editPageUrl + product.id"
+                        ><v-btn icon color="green"> <v-icon>mdi-pencil</v-icon> </v-btn></a
+                      >
+                    </td>
                   </tr>
                 </tbody>
               </template>
@@ -69,6 +74,7 @@ export default {
       padless: true,
       variant: "fixed",
       singleViewUrl: "view-product/",
+      editPageUrl : 'product/edit/'
     };
   },
   methods: {
@@ -80,6 +86,7 @@ export default {
           this.products = resposnse.data.products;
           this.headers = Object.keys(resposnse.data.products[0]);
           this.headers[10] = 'view';
+          this.headers[11] = 'edit';
         })
         .catch((error) => console.log(error));
     },
