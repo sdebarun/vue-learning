@@ -2,12 +2,17 @@
   <v-container>
     <v-row>
       <v-col cols="12"><v-breadcrumbs>Products/Edit/</v-breadcrumbs></v-col>
-      
-      <v-col cols="12"> 
-        <v-form ref="edit_form" v-model="valid" lazy-validation>
+      <v-col cols="7"> 
+        <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field label="Product Name" v-model="productModel.title" :rules="rules.prodcutName"></v-text-field>
           <v-text-field label="Product Price" v-model="productModel.price" :rules="rules.productPrice"></v-text-field>
+          <!-- <v-text-field label="Rating" v-model="productModel.rating" :rules="rules.productRating"></v-text-field> -->
+          <v-btn @click="submit()" color="green">Update</v-btn>
         </v-form>
+      </v-col>
+      <v-col cols="5">
+        <v-img :src="productModel.thumbnail"/>
+        <v-rating v-model="productModel.rating" background-color="green lighten-3" color="green" large></v-rating>
       </v-col>
     </v-row>
   </v-container>
@@ -42,6 +47,10 @@ export default {
           v => !!v || "please provide the price",
           v => (v && !isNaN(v)) || "price should be numeric"
         ],
+        productRating : [
+          v => !!v || 'please enter rating',
+          v => (v && !isNaN(v)) || 'rating should be numeric',
+        ],
       }
     };
   },
@@ -57,6 +66,10 @@ export default {
           console.log(error);
         });
     },
+    submit(){
+        console.log(this.productModel);
+
+    },
     isEdit() {
       if (this.type != "edit" && typeof this.id !== undefined) {
         return false;
@@ -66,7 +79,7 @@ export default {
       }
     },
   },
-  props: ["id", "type"],
+  props: ["id", "type","value"],
   mounted: function () {
     console.log(this.$route.params);
     // console.log(this.id);
@@ -76,4 +89,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .success-btn {
+    background: green;
+  }
+</style>
 
