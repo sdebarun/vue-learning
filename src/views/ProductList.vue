@@ -68,7 +68,7 @@ export default {
       icons: ["mdi-home", "mdi-email", "mdi-calendar", "mdi-delete"],
       padless: true,
       variant: "fixed",
-      singleViewUrl: "product/",
+      singleViewUrl: "view-product/",
     };
   },
   methods: {

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 import {BASE_URL} from '@/common/api';
 export default({
   data (){
@@ -22,8 +22,15 @@ export default({
     }
   },
   methods : {
-    loadProduct(){
-       //
+    loadProduct(id){
+        let url = BASE_URL + '/products/' + id
+        axios.get(url)
+          .then(resposne => {
+            console.log(resposne.data)
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
     isEdit(){
       if(this.type != 'edit' && typeof this.id !== undefined){
@@ -38,6 +45,9 @@ export default({
   mounted : function(){
     console.log(this.$route.params);
     console.log(this.id);
+    if(this.isEdit()){
+      this.loadProduct(this.id)
+    }
     
   }
 })
