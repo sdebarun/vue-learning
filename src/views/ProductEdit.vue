@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12"><v-breadcrumbs>Products/Edit/</v-breadcrumbs></v-col>
+      <v-col cols="12"><v-breadcrumbs>Products/{{$route.params.type}}/</v-breadcrumbs></v-col>
       <v-col cols="7"> 
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field label="Product Name" v-model="productModel.title" :rules="rules.prodcutName"></v-text-field>
@@ -79,14 +79,19 @@ export default {
       }
     },
   },
+  computed : {
+    capitalizeFirstLetter : function(string){
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  },
   props: ["id", "type","value"],
   mounted: function () {
     document.title = this.$route.name;
     console.log(this.$route.params);
     // console.log(this.id);
-    //if (this.isEdit()) {
+    if (this.$route.params.type == 'edit') {
       this.loadProduct(this.id);
-    // }
+    }
   },
 };
 </script>
