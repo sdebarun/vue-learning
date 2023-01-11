@@ -81,6 +81,7 @@ export default {
   },
   props: ["id", "type","value"],
   mounted: function () {
+    document.title = this.$route.name;
     console.log(this.$route.params);
     // console.log(this.id);
     //if (this.isEdit()) {
