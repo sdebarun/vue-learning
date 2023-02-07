@@ -100,5 +100,8 @@ export default {
   .success-btn {
     background: green;
   }
+  .v-messages__message{
+    color: red;
+  }
 </style>
 
