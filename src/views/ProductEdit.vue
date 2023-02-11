@@ -15,13 +15,18 @@
         <v-rating v-model="productModel.rating" background-color="green lighten-3" color="green" large></v-rating>
       </v-col>
     </v-row>
+    <footer-component></footer-component>
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
 import { BASE_URL } from "@/common/api";
+import FooterComponent from '@/components/FooterComponent.vue'
 export default {
+  components:{
+    FooterComponent
+  },
   data() {
     return {
       title: "Edit Page",
