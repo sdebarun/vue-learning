@@ -48,15 +48,8 @@
             </v-simple-table>
           </v-row>
         </v-container>
-        <v-card height="400px">
-          <v-footer v-bind="localAttrs" :padless="padless">
-            <v-card flat tile width="100%" class="green lighten-1 text-center">
-              <v-card-text class="white--text">
-                {{ new Date().getFullYear() }} — <strong>Debarun Saha</strong>
-              </v-card-text>
-            </v-card>
-          </v-footer>
-        </v-card>
+        <!-- add common footer -->
+        <footer-component></footer-component>
       </v-main>
     </div>
   </v-app>
@@ -65,7 +58,11 @@
 <script>
 import axios from "axios";
 import { BASE_URL } from "../common/api";
+import FooterComponent from '@/components/FooterComponent.vue'
 export default {
+  components:{
+    FooterComponent
+  },
   data() {
     return {
       products: [],
