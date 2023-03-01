@@ -14,13 +14,18 @@
             </v-col>
         </v-row>
       </v-container>
+      <footer-component></footer-component>
     </v-main>
   </v-app>
 </template>
 <script>
 import axios from "axios";
 import { BASE_URL } from "../common/api";
+import FooterComponent from '@/components/FooterComponent.vue'
 export default {
+  components:{
+    FooterComponent,
+  },
   data() {
     return {
       productDetails: {},

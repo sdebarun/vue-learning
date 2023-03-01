@@ -12,7 +12,7 @@
       </v-col>
       <v-col cols="5">
         <v-img :src="productModel.thumbnail"/>
-        <v-rating v-model="productModel.rating" background-color="green lighten-3" color="green" large></v-rating>
+        <v-rating v-model="productModel.rating" background-color="green lighten-3" color="green" large class="rating"></v-rating>
       </v-col>
     </v-row>
     <footer-component></footer-component>
@@ -107,6 +107,9 @@ export default {
   }
   .v-messages__message{
     color: red;
+  }
+  .rating{
+    color: red !important;
   }
 </style>
 

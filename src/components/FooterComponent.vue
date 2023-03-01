@@ -4,6 +4,7 @@
       <v-card flat tile width="100%" class="green lighten-1 text-center">
         <v-card-text class="white--text" id="font-white">
           {{ new Date().getFullYear() }} — <strong>Debarun Saha</strong>
+          <i>Years in service- {{ this.$store.count }}</i>
         </v-card-text>
       </v-card>
     </v-footer>
