@@ -5,11 +5,14 @@
     <v-list lines="one">
       <v-list-item v-for="topic in topics" :key="topic.title" :title="topic.title"><b>{{ topic.title }}</b> - {{ topic.content }}</v-list-item>
     </v-list>
+    <counter-component></counter-component>
   </v-container>
 </template>
 
 <script>
+import CounterComponent from './CounterComponent.vue'
   export default{
+  components: { CounterComponent },
     data() {
       return {
         subject: "Hi all, It is my vue learning app",
