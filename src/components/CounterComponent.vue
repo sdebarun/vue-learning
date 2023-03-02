@@ -16,7 +16,8 @@ export default {
   },
    methods: {
     increaseCounter() {
-      return this.$store.state.count++;
+      // return this.$store.state.count++;
+      this.$store.commit('increment',{number: 10});
     },
   },
 };

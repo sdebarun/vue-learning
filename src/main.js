@@ -12,6 +12,12 @@ const store = new Vuex.Store({
     count: 0,
     
   },
+  mutations:{
+    increment(state, payload){
+      console.log(payload);
+      return state.count += payload.number;
+    }
+  },
 });
 
 new Vue({
