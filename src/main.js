@@ -18,6 +18,21 @@ const store = new Vuex.Store({
       return state.count += payload.number;
     }
   },
+  getters:{
+    getCounterValue(state){
+      if(state.count > 100){
+        console.log("Hello World");
+      }
+      return state.count;
+    },
+    manipulateValue(_, getters){
+      console.log(_.__ob__);
+      const latestVal = getters.getCounterValue;
+      if(latestVal > 100){
+        return latestVal * 10;
+      }
+    }
+  }
 });
 
 new Vue({
